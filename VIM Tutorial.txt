@@ -1,0 +1,184 @@
+                VI/VIM Tutorial
+        1. Basics
+To start up VI/VIM, simply write to the linux command line:
+"VI" to open VI, or "VIM" if you have VIM available.
+There are three modes to VI, and an extra in VIM.
+Throughout the remainder of this tutorial, I will be
+referring to both VI and VIM collectively as just VIM
+unless otherwise stated.
+
+In order to move around, press hjkl. An easy way to remember
+which way is which is to remember that h is to the left and l
+is to the right. j has a part that goes downwards.
+
+                  k
+                  ^
+              h<     >l
+                  v
+                  j
+
+When you start VIM, you will be in normal mode. If you wish
+to type anything, you must go to insert mode. The most
+basic way to do this is by pressing lowercase i. Throughout the
+remainder of the tutorial, the case of the letter used will match
+what needs to be pressed.
+
+Other ways to enter insert mode and function:
+a: move one character over, then enter insert mode.
+A: Append to end of line
+o: make a new line below cursor and enter insert mode
+O: make a new line above cursor and enter insert mode
+I: insert at start of line
+c: delete selected character and enter insert mode
+C: delete entire line after character and enter insert mode
+R: enter "replace" mode: override each character as typed.
+
+In addition to insert mode, there is also normal mode. To get
+back to normal mode from insert mode, press <ESC>. Lastly in VI,
+there is command mode. This is where you enter various commands
+to effect a file.
+
+Examples of commands:
+:q! - quits without saving
+:w - saves document. Requires a file name if none set.
+:wq - saves document and quits
+
+The final mode, exclusive to VIM, is called visual.
+In this mode, you select text to run modifiers on.
+This is useful for when going in the middle of one line to the
+middle of the next. To enter this mode, press v. To exit, press
+<ESC>. Also, you can select blocks of text by pressing
+<CTRL>-V. This type of visual mode may be more useful under
+more situations.
+
+        2. Searching
+The easiest way to search in a document is to press / from
+normal mode. This does move you to command mode, but a
+different type. Then simply type what you want to search for.
+To go to the next find, press n. To go back, press
+<SHIFT>-N.
+
+You can also search using ?. The downside to this is that
+it reverses the functionality of n when finding next/previous,
+so it is often times better to just use one or the other.
+
+You can also search from normal mode, but in a different way:
+t: goes forward until it finds the specified character, but
+   doesn't highlight it.
+T: goes backward until it finds the specified character, but
+   doesn't highlight it.
+f: goes forward until it finds the specified character, and
+   highlights it.
+F: goes backward until it finds the specified character, and
+   highlights it.
+
+   For example, pressing tl will find the letter l looking
+   forward, but the cursor will appear before it. Pressing fl
+   on the same line and same place will find the same l, and
+   the cursor will appear over it.
+
+        3. Cut/Copy/Paste
+
+In VIM, the term for copy is known as yank. to use this command,
+you can either use a motion after pressing y or you can go into
+visual mode to select your text and press y while still
+selected.
+
+Example motions would be:
+$: copies to end of line
+w: copies word
+G: copies to beginning of file
+y: copies line
+
+There are other motions, but these are examples.
+
+Instead of copying, you can also cut. This is done through
+any command that deletes anything.
+
+For Example:
+x: deletes character under cursor
+dd: deletes line
+d <Motion>: deletes as motion shows
+Any insertion method that also deletes characters
+
+        4. Command to VIM file
+To make any command append to the bottom of the file, you
+only need to run:
+<Command> >> <Filename>
+
+To make any command output as a VIM file, you need to run:
+<Command> > <Filename>
+
+Using this, I can add the following:
+
+TEST
+testscript
+tutor
+tutorial
+
+This was done by running the ls command in my home directory
+and outputting it to append to the bottom of the file.
+
+        5. .exrc file
+In VIM, you can customize it to your liking. To do this, you can
+either run the command:
+vi .virc
+
+or:
+vim .vimrc
+
+Make sure you use the correct version for if you have VI or VIM.
+
+Some helpful commands are as follows:
+
+no <down> ddp
+no <left> <Nop>
+no <right> <Nop>
+no <up> ddkP
+ino <down> <Nop>
+ino <left> <Nop>
+ino <right> <Nop>
+ino <up> <Nop>
+vno <down> <Nop>
+vno <left> <Nop>
+vno <right> <Nop>
+vno <up> <Nop>
+set relativenumber
+set number
+nmap gO O<ESC>j
+nmap g<C-O> o<ESC>k
+set cul
+set foldcolumn=1
+
+These disable the arrow keys, to help kick the habit of using
+them, except the up and down arrow keys. These help to move
+lines around a file. Down will now move a line down below the
+next line and up will move a line above the previous. In any other
+mode, the arrow keys are disabled.
+
+In addition, line numbers will show on the left side of the
+screen. The line you are working on will show the line you are on
+while above and below will show how many lines are to that line.
+Also, the next two will add the option to add lines above and
+below your active line without entering insert mode, respectively.
+After that either highlights or underlines your active line.
+Lastly, the foldcolumn adds a small space between the left
+edge of the screen and the text, which can also be used to
+collapse parts of scripts.
+
+other helpful commands include:
+imap <leader>' ''<ESC>i
+imap <leader>" ""<ESC>i
+imap <leader>( ()<ESC>i
+imap <leader>[ []<ESC>i
+
+These help to pair quotations and brackets. By default, the
+<leader> refers to /, but you can set that to whatever you want.
+
+        6. Final Remarks
+These are the absolute basics of running VI/VIM. From here, it is
+just experimenting. Over time, one will find their own preferences
+for using VIM and will also have different preferences for
+what commands to put in their .vimrc/.virc.
+
+Happy VIM'ing
