@@ -1,0 +1,5 @@
+rm ~/sandbox/*.tmp
+rm ~/sandbox/*/*.tmp
+grep -Rns oncology ~/sandbox > ~/sandbox/oncology-pages
+grep -Rns radiology ~/sandbox > ~/sandbox/radiology-pages
+diff ~/sandbox/oncology-pages ~/sandbox/radiology-pages > ~/sandbox/oncology-radiology-compare
